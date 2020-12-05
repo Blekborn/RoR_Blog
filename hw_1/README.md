@@ -1,24 +1,8 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Встановити RVM, якщо ще не встановлений - `Done`
+- Створити проект на Ruby on Rails(6) - `Done`
+- Розібратися з структурою Rails проекту - `50/50`
+- Згенерувати контролер, який міститме в собі метод для в"юхи
+- Створити в"юху і заверстати на ній ваше CV(можна вкзати рандомні дані,
+   якщо не хочете шарить свої)
+- Лендінг пейджа має бути рут сторінкою
+- Додавати стилі, підключати бустрап можна поки на самій в"юсі(опціонально)
