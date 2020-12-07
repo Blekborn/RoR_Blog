@@ -1,2 +1,142 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<div class="wrapper">
+  <div class="sidebar-wrapper">
+    <div class="profile-container">
+      <img class="profile rounded-circle" src="<%= asset_path('my_photo1.png') %>" draggable="true" alt="my_photo"/>
+      <h1 class="name">Dmytro Datsenko</h1>
+      <h3 class="tagline">Junior beginner RoR</h3>
+    </div>
+    <div class="contact-container container-block">
+      <ul class="list-unstyled contact-list">
+        <li class="email">
+          <i class="fa fa-envelope"></i><a href="mailto: yourname@email.com">dmytrodatsenko10@gmail.com</a></li>
+        <li class="phone"><i class="fa fa-phone"></i><a href="tel:0123 456 789">093-907-24-93</a></li>
+        <li class="linkedin">
+          <i class="fa fa-linkedin"></i><a href="#" target="_blank">https://www.linkedin.com/in/dmitriy-datsenko-593553111/</a>
+        </li>
+        <li class="github"><i class="fa fa-github"></i><a href="#" target="_blank">https://github.com/Blekborn</a></li>
+        <li class="twitter">
+          <i class="fa fa-twitter"></i><a href="https://www.facebook.com/dmitriy.datsenko.7" target="_blank">facebook</a>
+        </li>
+      </ul>
+    </div>
+    <div class="education-container container-block">
+      <h2 class="container-block-title">Education</h2>
+      <div class="item">
+        <h4 class="degree">Electrical Engineer Specialist</h4>
+        <h5 class="meta">Cherkasy State Technical University</h5>
+        <div class="time">2008 - 2013</div>
+      </div>
+    </div>
+    <div class="languages-container container-block">
+      <h2 class="container-block-title">Languages</h2>
+      <ul class="list-unstyled interests-list">
+        <li>Ukrainian <span class="lang-desc">(Native)</span></li>
+        <li>English <span class="lang-desc">(Elementary)</span></li>
+        <li>Russian <span class="lang-desc">(Advanced)</span></li>
+      </ul>
+    </div>
+    <div class="interests-container container-block">
+      <h2 class="container-block-title">Interests</h2>
+      <ul class="list-unstyled interests-list">
+        <li>Technology</li>
+        <li>Sport</li>
+        <li>Cooking</li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-wrapper">
+    <section class="section summary-section">
+      <h2 class="section-title"><i class="fa fa-user"></i>Career Profile</h2>
+      <div class="summary">
+        <p>Summarise your career here lorem ipsum dolor sit amet, consectetuer adipiscing elit. You can
+          <a href="http://themes.3rdwavemedia.com/website-templates/orbit-free-resume-cv-template-for-developers/" target="_blank">download
+            this free resume/CV template here</a>. Aenean commodo ligula eget dolor aenean massa. Cum sociis natoque
+          penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
+          pellentesque eu.</p>
+      </div>
+    </section>
+    <section class="section experiences-section">
+      <h2 class="section-title"><i class="fa fa-briefcase"></i>Experiences</h2>
+      <div class="item">
+        <div class="meta">
+          <div class="upper-row">
+            <h3 class="job-title">Ruby on Rails</h3>
+            <div class="time">2020 - 2021</div>
+          </div>
+          <div class="company">Geekhub, Cherkassy</div>
+        </div>
+        <div class="details">
+          <p>
+            Ruby on Rails (RoR) is a popular framework for writing web services in the Ruby programming
+            language. Thanks to the main advantages of Ruby (dynamic language for object-oriented
+            programming, characterized by conciseness and intuitive, reference MVC architecture),
+            RoR allows you to develop high-quality web services at a fast pace. Among the web projects
+            written on Ruby on Rails are the following: GitHub, Twitter, Basecamp, Groupon, YP,
+            Shopify and others.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills-section section">
+      <h2 class="section-title"><i class="fa fa-rocket"></i>Skills &amp; Proficiency</h2>
+      <div class="skillset">
+        <div class="item">
+          <h3 class="level-title">Sql</h3>
+          <div class="level-bar">
+            <div class="level-bar-inner" data-level="65%">
+              65%
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <h3 class="level-title">Javascript &amp; jQuery</h3>
+          <div class="level-bar">
+            <div class="level-bar-inner" data-level="50%">
+              50%
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <h3 class="level-title">Git</h3>
+          <div class="level-bar">
+            <div class="level-bar-inner" data-level="70%">
+              70%
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <h3 class="level-title">HTML5 &amp; CSS</h3>
+          <div class="level-bar">
+            <div class="level-bar-inner" data-level="90%">
+              90%
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <h3 class="level-title">Ruby on Rails</h3>
+          <div class="level-bar">
+            <div class="level-bar-inner" data-level="45%">
+              45%
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <h3 class="level-title">Sketch &amp; Photoshop</h3>
+          <div class="level-bar">
+            <div class="level-bar-inner" data-level="70%">
+              70%
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+<footer class="footer">
+  <div class="text-center">
+    <!--/* This template is released under the Creative Commons Attribution 3.0 License. Please keep the attribution link below when using for your own project. Thank you for your support. :) If you'd like to use the template without the attribution, you can check out other license options via our website: themes.3rdwavemedia.com */-->
+    <small class="copyright">Ruby on Rails <i class="fa fa-heart"></i> </small>
+  </div>
+</footer>
+
+
