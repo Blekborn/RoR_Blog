@@ -1,4 +1,4 @@
-![Знімок екрана з 2020-12-09 19-25-40](https://user-images.githubusercontent.com/70092849/101664947-168e7c80-3a55-11eb-9a08-595bef81ae0f.png)
+![Знімок екрана з 2020-12-10 15-45-43](https://user-images.githubusercontent.com/70092849/101780519-514cef00-3aff-11eb-8008-92abb8aa0967.png)
 
 - Встановити RVM, якщо ще не встановлений - `Done`
 - Створити проект на Ruby on Rails(6) - `Done`
