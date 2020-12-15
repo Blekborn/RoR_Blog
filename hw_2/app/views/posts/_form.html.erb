@@ -12,26 +12,24 @@
   <% end %>
 
   <div class="form-group">
-    <%= form.label :name, :class => "form-label" %>
-    <%= form.text_field :name, :class => "form-text" %>
+    <%= form.label :author %>
+    <%= form.select(:name, options_for_select(Author.pluck(:first_name)))%>
   </div>
 
-  <div class="mb-3">
+  <div class="form-group">
     <%= form.label :title, :class => "form-label" %>
     <%= form.text_field :title, :class => "form-text" %>
   </div>
 
-  <div class="mb-3">
+  <div class="form-group">
     <%= form.label :content, :class => "form-label" %>
     <%= form.text_area :content, :class => "form-text" %>
   </div>
 
-  <div class="mb-3">
+  <div class="form-group">
     <%= form.label :image, :class => "form-label" %>
-    <%= form.text_field :image, :class => "form-text" %>
+    <%= form.text_field :image, :class => "form-text", placeholder: "Image url" %>
   </div>
 
   <%= form.submit :class => "btn btn-success" %>
-
-
 <% end %>
