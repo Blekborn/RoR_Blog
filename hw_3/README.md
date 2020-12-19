@@ -1,9 +1,9 @@
 Используя ваш текущий проект (hw_2) расширить его. - `Done`
 
 Задачи:
-1) Добавить сущность Comment
-2) Добавить миграцию в БД для связи таблиц posts и comments
-3) Добавить связь в моделях comment belongs_to post, post has_many comments
+1) Добавить сущность Comment - `Done`
+2) Добавить миграцию в БД для связи таблиц posts и comments - ``
+3) Добавить связь в моделях comment belongs_to post, post has_many comments - `Done`
 4) Комментарий должен иметь поля:
 	- body (type: text)
 	- status (type: integer) использовать enum
