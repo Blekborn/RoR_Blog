@@ -17,3 +17,12 @@
 9) На старнице блога мы должны иметь возможность выбрать отображение не опубликованных комментариев и возле каждого из коментариев должна быть кнопка опубликовать (publish) которая будет обновлять поле status и менять его значение на published. Ajax пока для этого использовать не обязательно, по-этому можно перезагружать страницу (редиректить на пост на котором вы были).
 10) Добавить хелпер distance_of_time_in_words для отображения на странице даты обновления (updated_at) поля постов и комментариев
 11) Добавить counter_cache для постов и выводить результат на списке постов (показывать кол-во просмотров поста)
+
+__________
+
+Литература:
+- https://api.rubyonrails.org/v5.2.4.4/classes/ActiveRecord/Enum.html
+- https://apidock.com/rails/ActionView/Helpers/DateHelper/distance_of_time_in_words
+- https://guides.rubyonrails.org/association_basics.html
+- https://blog.appsignal.com/2018/06/19/activerecords-counter-cache.html
+- https://guides.rubyonrails.org/active_record_callbacks.html
