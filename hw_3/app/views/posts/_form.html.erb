@@ -1,0 +1,35 @@
+<%= form_with(model: post) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :author %>
+    <%= form.select(:name, options_for_select(Author.pluck(:first_name)))%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :title, :class => "form-label" %>
+    <%= form.text_field :title, :class => "form-text" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :content, :class => "form-label" %>
+    <%= form.text_area :content, :class => "form-text" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :image, :class => "form-label" %>
+    <%= form.text_field :image, :class => "form-text", placeholder: "Image url" %>
+  </div>
+
+  <%= form.submit :class => "btn btn-success" %>
+<% end %>
