@@ -22,15 +22,12 @@ ActiveRecord::Schema.define(version: 2020_12_21_205247) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string "commenter"
     t.text "body"
     t.integer "status"
-    t.integer "post_id", null: false
-    t.integer "author_id", null: false
+    t.integer "author_id"
+    t.integer "post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["author_id"], name: "index_comments_on_author_id"
-    t.index ["post_id"], name: "index_comments_on_post_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -43,6 +40,4 @@ ActiveRecord::Schema.define(version: 2020_12_21_205247) do
     t.integer "author_id"
   end
 
-  add_foreign_key "comments", "authors"
-  add_foreign_key "comments", "posts"
 end

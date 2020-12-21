@@ -26,7 +26,7 @@
         <%= image_tag(@post.image, height: '300', width: '300') %>
       </p>
     </div>
-
+    <p><%= distance_of_time_in_words(@post.created_at, Time.now) %></p>
     <h2><%= @post.comments.count %> Comments</h2>
     <%= render @post.comments %>
 

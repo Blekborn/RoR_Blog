@@ -1,9 +1,11 @@
 <p>
   <strong>Commenter:</strong>
-  <%= comment.commenter %>
+  <%= comment.author.first_name %>
 </p>
 
 <p>
   <strong>Comment:</strong>
   <%= comment.body %>
+<%= distance_of_time_in_words(comment.created_at, Time.now) %>
+
 </p>
