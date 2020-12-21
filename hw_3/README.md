@@ -1,28 +1,43 @@
-Используя ваш текущий проект (hw_2) расширить его. - `Done`
+Нужно сгенерировать рельсовый проект и сгенерировать сущность Posts используя скафолд.
+Установить бутстрап гем, использовать его для вьюх (добавить вёрстку во вьюхах).
 
-Задачи:
-1) Добавить сущность Comment - `Done`
-2) Добавить миграцию в БД для связи таблиц posts и comments - `Done`
-3) Добавить связь в моделях comment belongs_to post, post has_many comments - `Done`
-4) Комментарий должен иметь поля: - `Done`
-	- body (type: text)
-	- status (type: integer) использовать enum
-	- поле status может иметь значения [published, unpublished]
-	- user_id
-	- post_id
-5) Добавить возможность создавать комментарий, комментарий должен принадлежать пользователю и посту (не должно быть возможности создавать комментарий которые не будет привязан к одной из сущностей (user, post))
-6) По умолчанию когда мы заходим на страницу поста, мы должны видеть только опубликованные коментарии, для этого используйте scope (:published) отсеивая только опубликованные комментарии с помощью выборки
-7) Добавить селект бокс с помощью которого мы сможем иметь возможность отображать либо опубликованные либо не опубликованные комментарии (или/или), для выборки не обуликованных комментарии тоже нужно использовать scope (:unpublished)
-8) При сохранении комментария, мы должны проверять что комментарий не пустой (есть значение в поле body), что он принадлежит и пользователю (которого мы выбрали) и посту в котором мы его создаём (коммент должен создаваться на странице поста), при создании по умолчанию комментарий должен быть не опубликован
-9) На старнице блога мы должны иметь возможность выбрать отображение не опубликованных комментариев и возле каждого из коментариев должна быть кнопка опубликовать (publish) которая будет обновлять поле status и менять его значение на published. Ajax пока для этого использовать не обязательно, по-этому можно перезагружать страницу (редиректить на пост на котором вы были).
-10) Добавить хелпер distance_of_time_in_words для отображения на странице даты обновления (updated_at) поля постов и комментариев - `Done`
-11) Добавить counter_cache для постов и выводить результат на списке постов (показывать кол-во просмотров поста)
+Шаги:
+1) Настроить RubyMine (или удобный для вас редактор) - `Done`
+2) Установить RoR 6.1 (gem install rails) - `Done`
+3) Убедиться что установлена нужная версия рельс (rails -v) - `Done`
+4) Сгенерировать рельсовый проект (rails new project_name) - `Done`
+5) Сгенерировать сущности Post используя скафолд и затем прогнать миграцию - `Done`
+     - rails generate scaffold Post name:string title:string content:text image:string
+     - rake db:migrate
+6) Запустить проект (убедиться что всё работает) - `Done`
+7) Установить бутстрап - `Done`
+8) Применить вёрстку используя бутстрап - `Done`
+9) Использовать обязательно RVM или rbenv - `Done`
+10) Настроить свою IDE или Text Editor согласно Ruby style code (два пробела, а не таб и т.д.) - `Done`
+11) сделать страницу постов (index) корневой страницей проекта - `Done`
+12) добавить валидацию (проверку наличия данных, максимального размера для title) полей поста (title, description) - `Done`
+13) создать модель Author (только модель (rails g model), таблица будет заполняться с помощью seed, создать 5 авторов) - `Done`
+14) Поля автора: first_name, last_name, gender, birthday (сгенерировать данные с помощью гема faker, тип полей в соответсвии с назначением (string, datetime)) - `Done`
+15) при создании или редактировании поста - автора мы должны выбирать с помощью выпадающего списка. - `Done`
+16) Поле image – url. Выводить на странице поста между title и description через хелпер/метод image_tag. - `Done`
+17) Залить на Хероку. - `Done` -------- https://boiling-spire-83817.herokuapp.com/
 
-__________
-
+_____________
 Литература:
-- https://api.rubyonrails.org/v5.2.4.4/classes/ActiveRecord/Enum.html
-- https://apidock.com/rails/ActionView/Helpers/DateHelper/distance_of_time_in_words
-- https://guides.rubyonrails.org/association_basics.html
-- https://blog.appsignal.com/2018/06/19/activerecords-counter-cache.html
-- https://guides.rubyonrails.org/active_record_callbacks.html
+https://rubygems.org/gems/rails
+https://www.xyzpub.com/en/ruby-on-rails/3.2/seed_rb.html
+https://guides.rubyonrails.org/command_line.html
+https://www.jetbrains.com/help/ruby/ruby-gemsets.html
+https://getbootstrap.com/docs/4.3/getting-started/download/#rubygems
+https://github.com/twbs/bootstrap-rubygem/blob/master/README.md
+https://guides.rubyonrails.org/action_view_overview.html
+https://guides.rubyonrails.org/layouts_and_rendering.html
+
+Дополнительная литература
+https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller
+https://guides.rubyonrails.org/routing.html
+https://guides.rubyonrails.org/active_record_validations.html
+
+Дополнительные ссылки
+https://mattbrictson.com/sublime-text-3-recommendations - хорошая статья по настройке Sublime Text 3
+https://www.marksayson.com/blog/setting-up-sublime-text-editor-for-ruby-on-rails/ - еще одна
