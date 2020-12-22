@@ -1,11 +1,18 @@
+<div class="p-3 mb-2 bg-light text-dark">
+
 <p>
-  <strong>Commenter:</strong>
+  <strong>Author:</strong>
   <%= comment.author.first_name %>
 </p>
 
 <p>
   <strong>Comment:</strong>
   <%= comment.body %>
-<%= distance_of_time_in_words(comment.created_at, Time.now) %>
-
 </p>
+<p><%= distance_of_time_in_words(comment.created_at, Time.now) %></p>
+<p>
+  <%= link_to 'Destroy Comment', [comment.post, comment], :class => "btn btn-primary",
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+</p>
+</div>

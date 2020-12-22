@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_12_21_205247) do
     t.integer "status"
     t.integer "author_id"
     t.integer "post_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
