@@ -10,6 +10,14 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @comment_status = params[:comments_status].to_s.downcase
+
+    @comments = if @comment_status == 'unpublished'
+                  @post.comments.unpublished
+                else
+                  @post.comments.published
+                end
+
     @post.increment(:views)
     @post.save
   end

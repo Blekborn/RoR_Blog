@@ -6,6 +6,6 @@ class Comment < ApplicationRecord
 
   enum status: %i[unpublished published]
 
-  scope :published, -> { where(status: 1) }
-  scope :unpublished, -> { where(unpublished: 0) }
+  # scope :published, -> { where(status: 1) }
+  # scope :unpublished, -> { where(status: 0) }
 end
