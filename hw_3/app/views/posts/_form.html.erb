@@ -12,24 +12,24 @@
   <% end %>
 
   <div class="form-group">
-    <%= form.label :author %>
-    <%= form.select(:author_id, Author.pluck(:first_name, :id), :class => "form-text") %>
+    <%= form.label :author, :class => "form-label" %>
+    <%= form.select(:author_id, Author.all.collect {|a| [ a.full_name, a.id ] }, :class => "form-control") %>
   </div>
 
   <div class="form-group">
     <%= form.label :title, :class => "form-label" %>
-    <%= form.text_field :title, :class => "form-text" %>
+    <%= form.text_field :title, :class => "form-control shadow-none" %>
   </div>
 
   <div class="form-group">
     <%= form.label :content, :class => "form-label" %>
-    <%= form.text_area :content, :class => "form-text" %>
+    <%= form.text_area :content, :rows => 5, :class => "form-control shadow-none" %>
   </div>
 
   <div class="form-group">
     <%= form.label :image, :class => "form-label" %>
-    <%= form.text_field :image, :class => "form-text", placeholder: "Image url" %>
+    <%= form.text_field :image, :class => "form-control shadow-none", placeholder: "Image url" %>
   </div>
 
-  <%= form.submit :class => "btn btn-success" %>
+  <%= form.submit :class => "btn btn-outline-success shadow-none" %>
 <% end %>

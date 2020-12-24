@@ -1,42 +1,33 @@
 <script>
-    $(function(){
-        $("#comments_select").change(function(){
+    $(function () {
+        $("#comments_select").change(function () {
             $('#comments_show').submit()
         })
     })
 </script>
 
-  <form action="<%= post_path(@post) %>" method='get' id='comments_show'>
-    <div class='field'>
-      <select name='comments_status' class='btn btn-primary' id='comments_select'>
-        <option <%= @comment_status == 'published' ? 'selected' : '' %> >Published</option>
-        <option <%= @comment_status == 'unpublished' ? 'selected' : '' %> >Unpublished</option>
-      </select>
-    </div>
-  </form>
-  <% @comments.each do |comment| %>
-  <div class="p-3 mb-2 bg-light text-dark">
-
-  <p>
-    <strong>Author:</strong>
-    <%= comment.author.first_name %>
-  </p>
-
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
-  <% if comment.status == 'unpublished' %>
-    <div class='btn btn-primary'>
-      <%= link_to 'Publish Comment', publish_post_comment_path(@post.id, comment.id), method: :post %>
-    </div>
-  <% end %>
-  <small class="text-muted"><%= distance_of_time_in_words(comment.created_at, Time.now) %></small>
-  <p>
-    <%= link_to 'Destroy Comment', [comment.post, comment], :class => "btn btn-danger",
-                method: :delete,
-                data: {confirm: 'Are you sure?'} %>
-  </p>
+<form action="<%= post_path(@post) %>" method='get' id='comments_show'>
+  <div class='field'>
+    <select name='comments_status' class='btn btn-outline-dark shadow-none' id='comments_select'>
+      <option <%= @comment_status == 'published' ? 'selected' : '' %> >Published</option>
+      <option <%= @comment_status == 'unpublished' ? 'selected' : '' %> >Unpublished</option>
+    </select>
   </div>
+</form>
+
+<% @comments.each do |comment| %>
+  <article class="blog-post">
+    <p class="blog-post-meta">
+      <small class="text-muted"><%= distance_of_time_in_words(comment.created_at, Time.now) %></small>
+      <a href="#"> <%= comment.author.full_name %></a></p>
+    <p><%= comment.body %></p>
+  </article>
+
+  <% if comment.status == 'unpublished' %>
+    <%= link_to 'Publish Comment', publish_post_comment_path(@post.id, comment.id), method: :post, :class => "btn btn-outline-dark shadow-none" %>
+  <% end %>
+  <%= link_to 'Destroy Comment', [comment.post, comment], :class => "btn btn-outline-danger shadow-none",
+              method: :delete,
+              data: {confirm: 'Are you sure?'} %>
 
 <% end %>
