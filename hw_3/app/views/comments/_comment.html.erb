@@ -19,7 +19,7 @@
   <article class="blog-post">
     <p class="blog-post-meta">
       <small class="text-muted"><%= distance_of_time_in_words(comment.created_at, Time.now) %></small>
-      <a href="#"> <%= comment.author.full_name %></a></p>
+      <strong class="d-inline-block mb-2 text-primary"><%= comment.author.full_name %></strong></p>
     <p><%= comment.body %></p>
   </article>
 
