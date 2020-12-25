@@ -1,4 +1,4 @@
-heroku: 
+heroku: https://stark-fortress-41242.herokuapp.com/
 
 Используя ваш текущий проект (hw_2) расширить его. - `Done`
 
