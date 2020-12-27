@@ -15,6 +15,16 @@
           </li>
         </ul>
       </div>
+
+      <% if current_user %>
+        <span class="text-light">Logged in as <%= current_user.email %></span>
+        |
+        <%= link_to "Log Out", logout_path, :class => "text-light" %>
+      <% else %>
+        <%= link_to "Sign Up", signup_path %> or
+        <%= link_to "Log In", login_path %>
+      <% end %>
+
       <form class="d-flex">
         <input class="form-control m-2 shadow-none" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success m-2" type="submit">Search</button>
