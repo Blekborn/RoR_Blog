@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<%= render 'header' %>
+
+<div class="p-4 p-md-5 mb-4">
+  <div class="px-0 p-4">
+    <h1 class="display-4 font-italic text-center">Show Post</h1>
+  </div>
+</div>
+
+<div class="container">
+  <div class="col-md-12">
+    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col p-4 d-flex flex-column position-static">
+        <strong class="d-inline-block mb-2 text-primary"><%= @post.author.full_name %></strong>
+        <h3 class="mb-0"><%= @post.title %></h3>
+        <div class="mb-1 text-muted"><%= distance_of_time_in_words(@post.created_at, Time.now) %></div>
+        <p class="card-text mb-auto"><%= @post.content %></p>
+      </div>
+      <div class="col-auto d-none d-lg-block">
+        <%= image_tag(@post.image, height: '250', width: '250') %>
+      </div>
+    </div>
+  </div>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-fill" viewBox="0 1 16 16">
+    <path d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15z"/>
+  </svg>
+  <span class="badge" style="font-size: 1rem;"><%= @post.comments.count %></span>
+  <br>
+  <br>
+  <%= render 'comments/comment' %>
+
+  <h2>Add a comment:</h2>
+  <%= render 'comments/form_comment' %>
+  <br>
+  <%= link_to 'Edit', edit_post_path(@post), :class => "btn btn-outline-dark shadow-none" %>
+  <%= link_to 'Back', posts_path, :class => "btn btn-outline-dark shadow-none" %>
+  <span class="p-4"></span>
+</div>
+
+
