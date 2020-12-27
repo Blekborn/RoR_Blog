@@ -16,3 +16,16 @@
 11. Если позволяет UI сделать вывод маленькой аватарочки авторизованного пользователя в его комментарии
 12. Сделать возможность добавления картинок для поста и вывод их на странице(продумайте где и как их наиболее красиво вывести)
 13. Задание опциональное, можно попробовать когда все сделали, и хочеться поразбираться и попробовать свои силы. Прикрутить внешнее хранение для ваших файлов(amazon ,google drive, etc...)
+
+Референсы:
+Посмотрите на реализацию блоговых систем:
+– https://habr.com/
+– https://medium.com/
+
+Почитать:
+https://guides.rubyonrails.org/action_view_helpers.html - про вьюшные хелперы
+https://guides.rubyonrails.org/form_helpers.html - про хелперы формы
+https://guides.rubyonrails.org/routing.html - про роутинг
+https://guides.rubyonrails.org/active_storage_overview.html - про актив сторедж
+
+Ознакомиться с http://railscasts.com/episodes/250-authentication-from-scratch-revised. Использовать для помощи в решении написании регистрации/авторизации.
