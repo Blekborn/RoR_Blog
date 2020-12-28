@@ -15,16 +15,26 @@
           </li>
         </ul>
       </div>
-
       <% if current_user %>
-        <span class="text-light">Logged in as <%= current_user.first_name %></span>
-        |
-        <%= link_to "Log Out", logout_path, :class => "text-light" %>
+        <div id="fat-menu" class="dropdown">
+          <a href="#" class="dropdown-toggle text-light" data-toggle="dropdown">
+            <%= current_user.first_name %> <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu bg-dark">
+            <li><%= link_to "Profile", current_user, :class => "text-light" %></li>
+            <br>
+            <li><%= link_to "Settings", edit_author_path(current_user), :class => "text-light" %></li>
+            <br>
+            <li class="divider"></li>
+            <li>
+              <%= link_to "Log Out", logout_path, method: "delete", :class => "text-light" %>
+            </li>
+          </ul>
+        </div>
       <% else %>
         <%= link_to "Sign Up", signup_path %> or
         <%= link_to "Log In", login_path %>
       <% end %>
-
       <form class="d-flex">
         <input class="form-control m-2 shadow-none" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success m-2" type="submit">Search</button>

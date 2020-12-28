@@ -1,22 +1,31 @@
 class AuthorsController < ApplicationController
 
+  def show
+    @author = Author.find(params[:id])
+  end
+
   def new
     @author = Author.new
   end
 
   def create
-    @author = Author.new(author_params)
+    @author = Author.new(user_params)
     if @author.save
-      session[:author_id] = @author.id
-      redirect_to root_path, notice: 'Thank you for signing up!'
+      log_in @author
+      flash[:success] = "Welcome to the Sample App!"
+      redirect_to @author
     else
       render 'new'
     end
   end
 
+  def edit
+    @author = Author.find(params[:id])
+  end
+
   private
 
-  def author_params
+  def user_params
     params.require(:author).permit(:first_name, :last_name, :email, :password, :password_confirmation)
   end
 

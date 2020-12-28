@@ -1,13 +1,16 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user
+  protect_from_forgery with: :exception
+  include SessionsHelper
 
-  private
-
-  def current_user
-    @current_user ||= Author.find(session[:author_id]) if session[:author_id]
-  end
-
-  def authorize
-    redirect_to login_url, alert: 'Not authorized' if current_user.nil?
-  end
+  # helper_method :current_user
+  #
+  # private
+  #
+  # def current_user
+  #   @current_user ||= Author.find(session[:author_id]) if session[:author_id]
+  # end
+  #
+  # def authorize
+  #   redirect_to login_url, alert: 'Not authorized' if current_user.nil?
+  # end
 end

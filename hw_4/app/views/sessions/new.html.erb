@@ -1,15 +1,27 @@
-<p id="alert"><%= alert %></p>
-<h1>Login</h1>
-<%= form_tag sessions_path do |form| %>
-  <div class="field">
-    <%= label_tag :email %>
-    <%= text_field_tag :email %>
+
+<%= render 'posts/header' %>
+
+<div class="p-4 p-md-5 mb-4">
+  <div class="px-0 p-4">
+    <h1 class="display-4 font-italic text-center">Login</h1>
   </div>
-  <div class="field">
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
+</div>
+<div class="row justify-content-center align-items-center h-100">
+  <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
+    <%= form_for(:session, url: login_path) do |f| %>
+      <div class="form-group">
+        <%= f.label :email, :class => "form-label" %>
+        <%= f.email_field :email, :class => "form-control shadow-none" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password, :class => "form-label" %>
+        <%= f.password_field :password, :class => "form-control shadow-none" %>
+      </div>
+      <%= f.label :remember_me, class: "checkbox inline" do %>
+        <%= f.check_box :remember_me %>
+        <span>Remember me on this computer</span>
+      <% end %>
+      <%= submit_tag "Login", class: "btn btn-outline-success shadow-none" %>
+    <% end %>
   </div>
-  <div class="actions">
-    <%= submit_tag "Login" %>
-  </div>
-<% end %>
+</div>
