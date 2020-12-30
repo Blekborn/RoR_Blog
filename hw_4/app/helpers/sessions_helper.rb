@@ -1,11 +1,12 @@
 module SessionsHelper
+
   def log_in(author)
     session[:author_id] = author.id
   end
 
   def remember(author)
     author.remember
-    cookies.permanent.signed[:author_id] = author.id
+    cookies.permanent.signed[:user_id] = author.id
     cookies.permanent[:remember_token] = author.remember_token
   end
 

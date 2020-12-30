@@ -9,7 +9,7 @@ class AuthorsController < ApplicationController
   end
 
   def create
-    @author = Author.new(user_params)
+    @author = Author.new(author_params)
     if @author.save
       log_in @author
       flash[:success] = "Welcome to the Sample App!"
@@ -19,14 +19,10 @@ class AuthorsController < ApplicationController
     end
   end
 
-  def edit
-    @author = Author.find(params[:id])
-  end
-
   private
 
-  def user_params
-    params.require(:author).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+  def author_params
+    params.require(:author).permit(:first_name, :last_name, :gender, :email, :password, :password_confirmation)
   end
 
 end

@@ -1,4 +1,3 @@
-
 <%= render 'posts/header' %>
 
 <div class="p-4 p-md-5 mb-4">
@@ -6,22 +5,24 @@
     <h1 class="display-4 font-italic text-center">Login</h1>
   </div>
 </div>
-<div class="row justify-content-center align-items-center h-100">
+<div class="row justify-content-center align-items-center">
   <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
-    <%= form_for(:session, url: login_path) do |f| %>
+    <%= form_for(:session, :url => sessions_path) do |f| %>
       <div class="form-group">
         <%= f.label :email, :class => "form-label" %>
-        <%= f.email_field :email, :class => "form-control shadow-none" %>
+        <%= f.email_field :email, class: 'form-control' %>
       </div>
       <div class="form-group">
         <%= f.label :password, :class => "form-label" %>
-        <%= f.password_field :password, :class => "form-control shadow-none" %>
+        <%= f.password_field :password, class: 'form-control' %>
       </div>
       <%= f.label :remember_me, class: "checkbox inline" do %>
         <%= f.check_box :remember_me %>
         <span>Remember me on this computer</span>
       <% end %>
-      <%= submit_tag "Login", class: "btn btn-outline-success shadow-none" %>
+      <%= f.submit "Log in", class: "btn btn-outline-success shadow-none" %>
     <% end %>
+    <br>
+    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
   </div>
 </div>

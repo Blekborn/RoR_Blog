@@ -13,9 +13,14 @@
           <li class="nav-item">
             <a><%= link_to 'New Post', new_post_path, :class => "nav-link" %></a>
           </li>
+          <% if logged_in? %>
+            <li>
+              <a><%= link_to 'Users', authors_path, :class => "nav-link" %></a>
+            </li>
+          <% end %>
         </ul>
       </div>
-      <% if current_user %>
+      <% if logged_in? %>
         <div id="fat-menu" class="dropdown">
           <a href="#" class="dropdown-toggle text-light" data-toggle="dropdown">
             <%= current_user.first_name %> <b class="caret"></b>
@@ -27,7 +32,7 @@
             <br>
             <li class="divider"></li>
             <li>
-              <%= link_to "Log Out", logout_path, method: "delete", :class => "text-light" %>
+              <%= link_to "Log Out", logout_path, method: "get", :class => "text-light" %>
             </li>
           </ul>
         </div>
@@ -35,6 +40,7 @@
         <%= link_to "Sign Up", signup_path %> or
         <%= link_to "Log In", login_path %>
       <% end %>
+
       <form class="d-flex">
         <input class="form-control m-2 shadow-none" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success m-2" type="submit">Search</button>

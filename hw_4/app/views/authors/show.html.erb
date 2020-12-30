@@ -4,6 +4,13 @@
   <div class="px-0 p-4">
     <h1 class="display-4 font-italic text-center">Profile</h1>
   </div>
+</div><div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for @author %>
+        <%= @author.first_name %>
+      </h1>
+    </section>
+  </aside>
 </div>
-  <%= gravatar_for @author %>
-  <%= @author.first_name %>
