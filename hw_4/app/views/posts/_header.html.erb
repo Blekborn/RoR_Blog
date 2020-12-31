@@ -10,10 +10,10 @@
           <li class="nav-item active">
             <a><%= link_to 'Home', posts_path, :class => "nav-link" %></a>
           </li>
-          <li class="nav-item">
-            <a><%= link_to 'New Post', new_post_path, :class => "nav-link" %></a>
-          </li>
           <% if logged_in? %>
+            <li class="nav-item">
+              <a><%= link_to 'New Post', new_post_path, :class => "nav-link" %></a>
+            </li>
             <li>
               <a><%= link_to 'Users', authors_path, :class => "nav-link" %></a>
             </li>
@@ -41,10 +41,15 @@
         <%= link_to "Log In", login_path %>
       <% end %>
 
-      <form class="d-flex">
-        <input class="form-control m-2 shadow-none" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success m-2" type="submit">Search</button>
-      </form>
+      <%= form_tag(posts_path, :method => "get", id: "search-form", class: "d-flex") do %>
+        <%= text_field_tag :search, params[:search], class: "form-control m-2 shadow-none", placeholder: "Search Posts" %>
+        <%= submit_tag "Search", class: "btn btn-outline-success m-2" %>
+      <% end %>
+
+<!--      <form class="d-flex">-->
+<!--        <input class="form-control m-2 shadow-none" type="search" placeholder="Search" aria-label="Search">-->
+<!--        <button class="btn btn-outline-success m-2" type="submit">Search</button>-->
+<!--      </form>-->
     </div>
   </nav>
 </header>

@@ -1,11 +1,17 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
-  before_action :authorize, only: %i[edit update]
+  before_action :logged_in_author, only: %i[create destroy]
 
   # GET /posts
   # GET /posts.json
   def index
     @posts = Post.all
+    @post = current_user.posts.build if logged_in?
+    @posts = if params[:search]
+               Post.search(params[:search]).order('created_at DESC')
+             else
+               Post.all.order('created_at DESC')
+             end
   end
 
   # GET /posts/1
@@ -70,6 +76,8 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def search; end
 
   private
 

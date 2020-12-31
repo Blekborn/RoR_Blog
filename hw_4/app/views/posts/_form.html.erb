@@ -11,10 +11,10 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= form.label :author, :class => "form-label" %>
-    <%= form.select(:author_id, Author.all.collect {|a| [ a.full_name, a.id ] }, :class => "form-control") %>
-  </div>
+<!--  <div class="form-group">-->
+    <%#= form.label :first_name, :class => "form-label" %>
+    <%#= form.text_field :first_name, :class => "form-control" %>
+<!--  </div>-->
 
   <div class="form-group">
     <%= form.label :title, :class => "form-label" %>

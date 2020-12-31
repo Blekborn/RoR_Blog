@@ -1,14 +1,14 @@
 class Author < ApplicationRecord
   attr_accessor :remember_token
-  has_many :posts
-  has_many :comments
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
   before_save { self.email = email.downcase }
   validates :first_name, presence: true, length: { maximum: 50 }
   has_secure_password
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
-            uniqueness: { case_sensitive: false }
+                    uniqueness: { case_sensitive: false }
 
   VALID_PASSWORD_REGEX = /\A
   (?=.{8,})
@@ -16,7 +16,7 @@ class Author < ApplicationRecord
   (?=.*[a-z])
   (?=.*[[:^alnum:]])
 /x
-  validates :password, presence: true, format: { with: VALID_PASSWORD_REGEX }
+  validates :password, presence: true, format: { with: VALID_PASSWORD_REGEX }, allow_nil: true
 
   def self.digest(string)
     cost = if ActiveModel::SecurePassword.min_cost
