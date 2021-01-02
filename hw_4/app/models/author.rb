@@ -45,4 +45,9 @@ class Author < ApplicationRecord
   def forget
     update_attribute(:remember_digest, nil)
   end
+
+  def feed
+    Post.where('author_id = ?', id)
+  end
+  
 end

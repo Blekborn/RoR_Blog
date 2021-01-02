@@ -2,18 +2,22 @@
 
 <div class="p-4 p-md-5 mb-4">
   <div class="px-0 p-4">
-    <h1 class="display-4 font-italic text-center">Update your profile</h1>
+    <h1 class="display-4 font-italic text-center">Users</h1>
   </div>
 </div>
+
 <div class="row justify-content-center align-items-center">
   <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
-    <ul class="authors">
-      <% @authors.each do |author| %>
-        <li>
-          <%= gravatar_for author %>
-          <%= link_to author.first_name, author %>
-        </li>
-      <% end %>
-    </ul>
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+      <div class="d-flex text-muted pt-3">
+        <p class="pb-3 mb-0 small lh-sm border-bottom">
+          <% @authors.each do |author| %>
+            <%= gravatar_for author %>
+            <strong class="d-block text-gray-dark"><%= link_to author.first_name, author %></strong>
+            <br><br>
+        <% end %>
+        </p>
+      </div>
+    </div>
   </div>
 </div>

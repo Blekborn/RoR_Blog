@@ -13,7 +13,8 @@
       <div class="row featurette">
         <div class="col-md-7">
           <h2 class="featurette-heading">
-            <%#= gravatar_for current_user %> <%#= current_user.first_name %>
+            <%= gravatar_for post.author %>
+            <%= post.author.first_name %>
             <br>
             <span class="text-muted"><%= post.title %></span></h2>
           <p><i><%= post.content %></i></p>
@@ -45,8 +46,10 @@
         </div>
         <div class="btn-group" role="group" aria-label="Basic outlined example">
           <%= link_to 'Show', post, :class => "btn btn-outline-dark shadow-none" %>
-          <%= link_to 'Edit', edit_post_path(post), :class => "btn btn-outline-dark shadow-none" %>
-          <%= link_to 'Destroy', post, method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-outline-dark shadow-none" %>
+          <% if post.author == current_user %>
+            <%= link_to 'Edit', edit_post_path(post), :class => "btn btn-outline-dark shadow-none" %>
+            <%= link_to 'Destroy', post, method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-outline-dark shadow-none" %>
+          <% end %>
         </div>
       </div>
       <hr class="featurette-divider">
