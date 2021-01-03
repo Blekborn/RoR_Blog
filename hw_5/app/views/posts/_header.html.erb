@@ -1,0 +1,51 @@
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <a><%= link_to 'Blog RoR', posts_path, :class => "navbar-brand" %></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item active">
+            <a><%= link_to 'Home', posts_path, :class => "nav-link" %></a>
+          </li>
+          <% if logged_in? %>
+            <li class="nav-item">
+              <a><%= link_to 'New Post', new_post_path, :class => "nav-link" %></a>
+            </li>
+            <li>
+              <a><%= link_to 'Users', authors_path, :class => "nav-link" %></a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <% if logged_in? %>
+        <div id="fat-menu" class="dropdown">
+          <a href="#" class="dropdown-toggle text-light" data-toggle="dropdown">
+            <%= current_user.first_name %> <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu bg-dark">
+            <li><%= link_to "Profile", current_user, :class => "text-light" %></li>
+            <br>
+            <li><%= link_to "Settings", edit_author_path(current_user), :class => "text-light" %></li>
+            <br>
+            <li class="divider"></li>
+            <li>
+              <%= link_to "Log Out", logout_path, method: "get", :class => "text-light" %>
+            </li>
+          </ul>
+        </div>
+      <% else %>
+        <%= link_to "Sign Up", signup_path %> or
+        <%= link_to "Log In", login_path %>
+      <% end %>
+
+      <%= form_tag(posts_path, :method => "get", id: "search-form", class: "d-flex") do %>
+        <%= text_field_tag :search, params[:search], class: "form-control m-2 shadow-none", placeholder: "Search Posts" %>
+        <%= submit_tag "Search", class: "btn btn-outline-success m-2" %>
+      <% end %>
+
+    </div>
+  </nav>
+</header>
