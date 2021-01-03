@@ -1,6 +1,6 @@
 class AuthorsController < ApplicationController
   before_action :logged_in_author, only: %i[index edit update]
-  before_action :correct_author,   only: %i[edit update]
+  before_action :correct_author, only: %i[edit update]
 
   def index
     @authors = Author.all

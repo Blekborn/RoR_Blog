@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2020_12_29_221004) do
     t.integer "post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id", "created_at"], name: "index_comments_on_post_id_and_created_at"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(version: 2020_12_29_221004) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "author_id"
     t.integer "views", default: 0
+    t.index ["author_id", "created_at"], name: "index_posts_on_author_id_and_created_at"
   end
 
 end

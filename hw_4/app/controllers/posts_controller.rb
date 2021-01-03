@@ -1,12 +1,11 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
   before_action :logged_in_author, only: %i[create destroy]
-  before_action :correct_user,   only: :destroy
+  before_action :correct_user, only: :destroy
 
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
     @post = current_user.posts.build if logged_in?
     @posts = if params[:search]
                Post.search(params[:search]).order('created_at DESC')
@@ -18,16 +17,18 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @comment_status = params[:comments_status].to_s.downcase
+    @comments = @post.comments
+    # @comment_status = params[:comments_status].to_s.downcase
+    #
+    ## @comments = if @comment_status == 'unpublished'
+    #               @post.comments.unpublished
+    ##             else
+    #               @post.comments.published
+    ##             end
 
-    @comments = if @comment_status == 'unpublished'
-                  @post.comments.unpublished
-                else
-                  @post.comments.published
-                end
-
-    @post.increment(:views)
-    @post.save
+    # @post.increment(:views)
+    # @post.save
+    @post.increment!(:views)
   end
 
   # GET /posts/new
@@ -88,7 +89,7 @@ class PostsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def post_params
-    params.require(:post).permit(:first_name, :title, :content, :image, :author_id)
+    params.require(:post).permit(:title, :content, :image, :author_id)
   end
 
   def correct_user

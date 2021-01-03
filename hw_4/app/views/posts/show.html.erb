@@ -16,7 +16,6 @@
         <%= gravatar_for @post.author %>
         <%= @post.author.first_name %>
         </h2>
-<!--        <strong class="d-inline-block mb-2 text-primary"><%#= @post.first_name %></strong>-->
         <h3 class="mb-0"><%= @post.title %></h3>
         <div class="mb-1 text-muted"><%= distance_of_time_in_words(@post.created_at, Time.now) %></div>
         <p class="card-text mb-auto"><%= @post.content %></p>
@@ -33,9 +32,10 @@
   <br>
   <br>
   <%= render 'comments/comment' %>
-
+  <% if logged_in? %>
   <h2>Add a comment:</h2>
   <%= render 'comments/form_comment' %>
+    <% end %>
   <br>
   <%= link_to 'Back', posts_path, :class => "btn btn-outline-dark shadow-none" %>
   <span class="p-4"></span>
