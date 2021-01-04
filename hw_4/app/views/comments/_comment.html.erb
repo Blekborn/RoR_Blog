@@ -23,17 +23,16 @@
     <p>
       <small class="text-muted"><%= distance_of_time_in_words(comment.created_at, Time.now) %></small>
       <br>
+      <%if comment.created_at < comment.updated_at%><span class="edited" style="color: #cc0000;">edited</span><%end%>
       <%= comment.body %></p>
   </article>
-
   <%# if comment.status == 'unpublished' %>
   <%#= link_to 'Publish Comment', publish_post_comment_path(@post.id, comment.id), method: :post, :class => "btn btn-outline-dark shadow-none" %>
   <%# end %>
   <% if comment.author == current_user %>
-    <%= link_to 'Edit', edit_post_comment_path(@post, comment), :class => "btn btn-outline-dark shadow-none" %>
-
-
-
+    <% if comment.created_at >= 1.hour.ago %>
+      <%= link_to 'Edit', edit_post_comment_path(@post, comment), :class => "btn btn-outline-dark shadow-none" %>
+    <% end %>
     <%= link_to 'Destroy Comment', [comment.post, comment], :class => "btn btn-outline-danger shadow-none",
                 method: :delete,
                 data: { confirm: 'Are you sure?' } %>

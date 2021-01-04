@@ -2,6 +2,8 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
   before_action :logged_in_author, only: %i[create destroy]
   before_action :correct_user, only: :destroy
+  before_action :add_view, only: %i[index show]
+
 
   def index
     @post = current_user.posts.build if logged_in?
@@ -82,5 +84,12 @@ class PostsController < ApplicationController
   def correct_user
     @post = current_user.posts.find_by(id: params[:id])
     redirect_to root_url if @post.nil?
+  end
+
+  def add_view
+    unless current_user
+      cookies[:views] = cookies[:views].present? ? cookies[:views].to_i + 1 : 1
+      @pls_register = cookies[:views].to_i % 5 == 0
+    end
   end
 end
