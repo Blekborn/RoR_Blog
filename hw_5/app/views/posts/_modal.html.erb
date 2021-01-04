@@ -1,0 +1,25 @@
+<% if @pls_register %>
+  <div id="myModal" class="modal" style="width: 50%; margin: 0 auto; right: 0;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close" style="position: relative; top: 7px; left: -10px;">&times;</span>
+        <h2> Hi guest</h2>
+      </div>
+      <div class="modal-body">
+        <p>Please log in or register otherwise I'll get you)</p>
+      </div>
+      <div class="modal-footer">
+        <%= link_to "Sign Up", signup_path %> or
+        <%= link_to "Log In", login_path %>
+      </div>
+    </div>
+  </div>
+  <script>
+      $(function () {
+          $("#myModal").show()
+          $('.close').click(function () {
+              $("#myModal").css("display", "none")
+          });
+      })
+  </script>
+<% end %>
