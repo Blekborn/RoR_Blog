@@ -6,14 +6,15 @@ class PostsController < ApplicationController
   def index
     @post = current_user.posts.build if logged_in?
     @posts = if params[:search]
-               Post.search(params[:search]).order('created_at DESC')
+               Post.search(params[:search]).order('created_at DESC').paginate(page: params[:page], per_page: 8)
              else
-               Post.all.order('created_at DESC')
+               Post.all.order('created_at DESC').paginate(page: params[:page], per_page: 8)
              end
   end
 
   def show
     @comments = @post.comments
+
     # @comment_status = params[:comments_status].to_s.downcase
     #
     ## @comments = if @comment_status == 'unpublished'
@@ -31,7 +32,6 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
-  # GET /posts/1/edit
   def edit; end
 
   def create

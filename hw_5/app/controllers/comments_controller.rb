@@ -1,15 +1,23 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: %i[new edit create update destroy]
+  before_action :set_comment # , only: %i[new edit show create update destroy]
   before_action :logged_in_author, only: %i[create destroy]
 
   #@comment = Comment.new(author_id: params[:author_id])
+  def show
+    @comment = @post.comments.find(params[:id])
+  end
 
-  def new; end
+  def new
+    @comment = @post.comments.build
+  end
 
-  def edit; end
+  def edit
+    @comment = @post.comments.find(params[:id])
+  end
 
   def create
-    @comment = @post.comments.create(comment_params)
+    @comment = @post.comments.build(comment_params)
+    # @comment = @post.comments.create(comment_params)
     # redirect_to post_path(@post)
     if @comment.save
       redirect_to post_path(@post)
@@ -19,12 +27,6 @@ class CommentsController < ApplicationController
     end
   end
 
-  def destroy
-    @comment = @post.comments.find(params[:id])
-    @comment.destroy
-    redirect_to post_path(@post)
-  end
-
   def update
     @comment = @post.comments.find(params[:id])
     if @comment.update(comment_params)
@@ -32,6 +34,12 @@ class CommentsController < ApplicationController
     else
       redirect_to post_path(@post)
     end
+  end
+
+  def destroy
+    @comment = @post.comments.find(params[:id])
+    @comment.destroy
+    redirect_to post_path(@post)
   end
 
   def publish
