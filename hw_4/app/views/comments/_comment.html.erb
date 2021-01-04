@@ -18,22 +18,27 @@
 <% @comments.each do |comment| %>
   <article class="blog-post">
     <p class="blog-post-meta">
-      <small class="text-muted"><%= distance_of_time_in_words(comment.created_at, Time.now) %></small>
+      <%= gravatar_for comment.author %>
       <strong class="d-inline-block mb-2 text-primary"><%= comment.author.first_name %></strong></p>
-    <p><%= comment.body %></p>
+    <p>
+      <small class="text-muted"><%= distance_of_time_in_words(comment.created_at, Time.now) %></small>
+      <br>
+      <%= comment.body %></p>
   </article>
 
   <%# if comment.status == 'unpublished' %>
-    <%#= link_to 'Publish Comment', publish_post_comment_path(@post.id, comment.id), method: :post, :class => "btn btn-outline-dark shadow-none" %>
+  <%#= link_to 'Publish Comment', publish_post_comment_path(@post.id, comment.id), method: :post, :class => "btn btn-outline-dark shadow-none" %>
   <%# end %>
   <% if comment.author == current_user %>
-    <%= link_to 'Edit', edit_post_comment_path(comment), :class => "btn btn-outline-dark shadow-none" %>
+    <%= link_to 'Edit', edit_post_comment_path(@post, comment), :class => "btn btn-outline-dark shadow-none" %>
+
+
+
     <%= link_to 'Destroy Comment', [comment.post, comment], :class => "btn btn-outline-danger shadow-none",
-              method: :delete,
-              data: {confirm: 'Are you sure?'} %>
-    <% end %>
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %>
+  <% end %>
   <br>
   <br>
   <hr class="featurette-divider w-25 d-inline-block">
-
 <% end %>

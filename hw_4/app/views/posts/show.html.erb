@@ -21,7 +21,10 @@
         <p class="card-text mb-auto"><%= @post.content %></p>
       </div>
       <div class="col-auto d-none d-lg-block">
-        <%= image_tag(@post.image, height: '250', width: '250') %>
+        <%#= image_tag(@post.image, height: '250', width: '250') %>
+        <% if @post.photo.present? %>
+          <p><%= image_tag @post.photo.url(:medium) %></p>
+        <% end %>
       </div>
     </div>
   </div>

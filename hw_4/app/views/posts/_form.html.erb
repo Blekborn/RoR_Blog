@@ -26,9 +26,13 @@
     <%= form.text_area :content, :rows => 5, :class => "form-control shadow-none" %>
   </div>
 
+<!--  <div class="form-group">-->
+    <%#= form.label :image, :class => "form-label" %>
+    <%#= form.text_field :image, :class => "form-control shadow-none", placeholder: "Image url" %>
+<!--  </div>-->
   <div class="form-group">
-    <%= form.label :image, :class => "form-label" %>
-    <%= form.text_field :image, :class => "form-control shadow-none", placeholder: "Image url" %>
+    <%= form.label :photo, :class => "form-label" %>
+    <%= form.file_field :photo %>
   </div>
 
   <%= form.submit :class => "btn btn-outline-success shadow-none" %>

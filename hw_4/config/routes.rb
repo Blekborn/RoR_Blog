@@ -8,10 +8,11 @@ Rails.application.routes.draw do
   resources :sessions
 
   resources :posts do
-    resources :comments do
-      member do
-        post :publish
-      end
-    end
+    resources :comments
+    # do
+    #   member do
+    #     post :publish
+    # #  end
+    # end
   end
 end

@@ -1,6 +1,5 @@
 <p id="notice"><%= notice %></p>
 <%= render 'header' %>
-
 <div class="p-4 p-md-5 mb-4">
   <div class="px-0 p-4">
     <h1 class="display-4 font-italic text-center">Title of a longer featured blog post</h1>
@@ -20,7 +19,10 @@
           <p><i><%= post.content %></i></p>
         </div>
         <div class="col-md-5 text-right">
-          <%= image_tag(post.image, :class => "img-thumbnail img-fluid") %>
+          <%#= image_tag(post.image, :class => "img-thumbnail img-fluid") %>
+          <% if post.photo.present? %>
+            <p><%= image_tag post.photo.url(:medium) %></p>
+          <% end %>
         </div>
         <div class="viewing m-2">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 2 16 16">
@@ -53,9 +55,18 @@
         </div>
       </div>
       <hr class="featurette-divider">
+
     </div>
   </main>
 <% end %>
+<div class="row justify-content-center align-items-center">
+  <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
+  <%= will_paginate @posts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+  </div>
+</div>
+
+
+
 
 
 

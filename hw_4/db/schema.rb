@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_29_221004) do
+ActiveRecord::Schema.define(version: 2021_01_03_164234) do
 
   create_table "authors", force: :cascade do |t|
     t.string "first_name"
@@ -44,6 +44,10 @@ ActiveRecord::Schema.define(version: 2020_12_29_221004) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "author_id"
     t.integer "views", default: 0
+    t.string "photo_file_name"
+    t.string "photo_content_type"
+    t.bigint "photo_file_size"
+    t.datetime "photo_updated_at"
     t.index ["author_id", "created_at"], name: "index_posts_on_author_id_and_created_at"
   end
 
