@@ -26,13 +26,13 @@
             <%= current_user.first_name %> <b class="caret"></b>
           </a>
           <ul class="dropdown-menu bg-dark">
-            <li><%= link_to "Profile", current_user, :class => "text-light" %></li>
+            <li><%= link_to "Profile author", current_user, :class => "text-light m-4" %></li>
             <br>
-            <li><%= link_to "Settings", edit_author_path(current_user), :class => "text-light" %></li>
+            <li><%= link_to "Settings author", edit_author_path(current_user), :class => "text-light m-4" %></li>
             <br>
             <li class="divider"></li>
             <li>
-              <%= link_to "Log Out", logout_path, method: "get", :class => "text-light" %>
+              <%= link_to "Log Out", logout_path, method: "get", :class => "text-light m-4" %>
             </li>
           </ul>
         </div>
