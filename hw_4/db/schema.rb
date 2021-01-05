@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(version: 2021_01_03_164234) do
     t.integer "post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id", "created_at"], name: "index_comments_on_post_id_and_created_at"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -48,7 +47,6 @@ ActiveRecord::Schema.define(version: 2021_01_03_164234) do
     t.string "photo_content_type"
     t.bigint "photo_file_size"
     t.datetime "photo_updated_at"
-    t.index ["author_id", "created_at"], name: "index_posts_on_author_id_and_created_at"
   end
 
 end

@@ -1,4 +1,10 @@
-* heroku 
+#local:
+- bundle install
+- rake db:migrate
+- yarn add bootstrap jquery popper.js
+- rails s
+
+###heroku: https://intense-basin-42291.herokuapp.com/
 
 1. Сделать систему авторизации для Author.
    Сделать возможность регистрации, входа и выхода (готовые гемы не использовать).
