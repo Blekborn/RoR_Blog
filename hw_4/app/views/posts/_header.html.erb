@@ -37,8 +37,8 @@
           </ul>
         </div>
       <% else %>
-        <%= link_to "Sign Up", signup_path %> or
-        <%= link_to "Log In", login_path %>
+        <%= link_to "Sign Up ", signup_path, :style => "color: #fff" %> <span style="color: #fff;margin: 0 5px;"> or </span>
+        <%= link_to " Log In", login_path, :style => "color: #fff" %>
       <% end %>
       <%= form_tag(posts_path, :method => "get", id: "search-form", class: "d-flex") do %>
         <%= text_field_tag :search, params[:search], class: "form-control m-2 shadow-none", placeholder: "Search Posts" %>
