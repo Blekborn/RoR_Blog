@@ -25,6 +25,13 @@
       <br>
       <%if comment.created_at < comment.updated_at%><span class="edited" style="color: #cc0000;">edited</span><%end%>
       <%= comment.body %></p>
+    Sum:<%= comment.votes_for.size %>
+    <br>
+    <%= comment.get_upvotes.size %>
+    <%= link_to ('<i class="fa fa-thumbs-up"></i>').html_safe, like_post_comment_path(@post, comment), method: :put %>
+    <%= comment.get_downvotes.size %>
+    <%= link_to ('<i class="fa fa-thumbs-down"></i>').html_safe, dislike_post_comment_path(@post, comment), method: :put %>
+
   </article>
   <%# if comment.status == 'unpublished' %>
   <%#= link_to 'Publish Comment', publish_post_comment_path(@post.id, comment.id), method: :post, :class => "btn btn-outline-dark shadow-none" %>

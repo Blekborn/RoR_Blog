@@ -1,7 +1,7 @@
 class Comment < ApplicationRecord
   belongs_to :post
   belongs_to :author
-
+  acts_as_votable
   validates :body, presence: true
 
   enum status: %i[unpublished published]

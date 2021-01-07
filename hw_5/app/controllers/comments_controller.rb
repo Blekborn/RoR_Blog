@@ -48,6 +48,20 @@ class CommentsController < ApplicationController
     redirect_to post_path(@post), notice: 'successfully published.'
   end
 
+  def upvote
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
+    @comment.liked_by current_user
+    redirect_to post_path(@post)
+  end
+
+  def downvote
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
+    @comment.downvote_from current_user
+    redirect_to post_path(@post)
+  end
+
   private
 
   def set_comment
