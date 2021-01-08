@@ -63,6 +63,8 @@ GEM
     acts_as_votable (0.13.1)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    ancestry (3.2.1)
+      activerecord (>= 4.2.0)
     aws-eventstream (1.1.0)
     aws-partitions (1.414.0)
     aws-sdk (3.0.1)
@@ -1264,6 +1266,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_votable
+  ancestry
   aws-sdk
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.4)
