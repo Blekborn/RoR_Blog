@@ -1,3 +1,5 @@
+
+
 <%= render 'posts/header' %>
 
 <div class="p-4 p-md-5 mb-4">
@@ -5,9 +7,13 @@
     <h1 class="display-4 font-italic text-center">Login</h1>
   </div>
 </div>
+<p id="notice"><%= notice %></p>
+
 <div class="row justify-content-center align-items-center">
   <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
     <%= form_for(:session, :url => sessions_path) do |f| %>
+
+
       <div class="form-group">
         <%= f.label :email, :class => "form-label" %>
         <%= f.email_field :email, class: 'form-control' %>

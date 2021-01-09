@@ -1,4 +1,5 @@
-<p id="notice"><%= notice %></p>
+<p id="notice" class="notice"><%= notice %></p>
+
 <%= render 'header' %>
 <%= render 'modal'%>
 <div class="p-4 p-md-5 mb-4">
@@ -6,6 +7,7 @@
     <h1 class="display-4 font-italic text-center">Title of a longer featured blog post</h1>
   </div>
 </div>
+
 <% @posts.each do |post| %>
   <main>
     <div class="container marketing">
@@ -13,9 +15,7 @@
       <div class="row featurette">
         <div class="col-md-7">
           <h2 class="featurette-heading">
-            <%#= gravatar_for post.author %>
             <%= avatar_for(post.author, size: 40) %>
-
             <%= post.author.first_name %>
             <br>
             <span class="text-muted"><%= post.title %></span></h2>

@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
         redirect_to @post
       else
         redirect_to @post
-        flash[:danger] = 'Comment is too long (maximum is 300 characters)'
+        flash[:danger] = 'Comment is not'
       end
     else
       redirect_to @post, alert: 'To much comments in one tree (5 comments max)'

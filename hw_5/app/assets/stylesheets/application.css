@@ -23,3 +23,6 @@
 .nested_comments .nested_comments .nested_comments {
     margin-left: 0;
 }
+.alert-danger{
+    top: 70px;
+}
