@@ -12,8 +12,9 @@
       <div class="my-3 p-3 bg-white rounded shadow-sm">
         <div class="d-flex text-muted pt-3">
           <p class="pb-3 mb-0 small lh-sm border-bottom">
+
             <% @authors.each do |author| %>
-              <%= gravatar_for author %>
+              <%= avatar_for(author) %>
               <strong class="d-block text-gray-dark"><%= link_to author.first_name, author %></strong>
               <br><br>
             <% end %>

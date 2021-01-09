@@ -73,3 +73,5 @@ gem 'will_paginate-bootstrap4'
 gem 'acts_as_votable'
 gem "font-awesome-rails"
 gem 'ancestry'
+gem 'carrierwave'
+gem 'mini_magick'

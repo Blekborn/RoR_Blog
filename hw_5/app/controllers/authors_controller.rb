@@ -1,6 +1,7 @@
 class AuthorsController < ApplicationController
   before_action :logged_in_author, only: %i[index edit update]
   before_action :correct_author, only: %i[edit update]
+  before_action :set_author, only: %i[edit update show]
 
   def index
     @authors = Author.all
@@ -25,12 +26,9 @@ class AuthorsController < ApplicationController
     end
   end
 
-  def edit
-    @author = Author.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @author = Author.find(params[:id])
     if @author.update(author_params)
       flash[:success] = 'Profile updated'
       redirect_to @author
@@ -41,8 +39,12 @@ class AuthorsController < ApplicationController
 
   private
 
+  def set_author
+    @author = Author.find(params[:id])
+  end
+
   def author_params
-    params.require(:author).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    params.require(:author).permit(:first_name, :last_name, :email, :password, :password_confirmation, :avatar)
   end
 
   def logged_in_author

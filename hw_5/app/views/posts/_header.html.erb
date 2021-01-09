@@ -21,9 +21,10 @@
         </ul>
       </div>
       <% if logged_in? %>
+
         <div id="fat-menu" class="dropdown">
           <a href="#" class="dropdown-toggle text-light" data-toggle="dropdown">
-            <%= current_user.first_name %> <b class="caret"></b>
+            <%= avatar_for(current_user, size: 40) %> <b class="caret"></b>
           </a>
           <ul class="dropdown-menu bg-dark">
             <li><%= link_to "Profile author", current_user, :class => "text-light m-4" %></li>

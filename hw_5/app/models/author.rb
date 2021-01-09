@@ -3,6 +3,7 @@ class Author < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   acts_as_voter
+  mount_uploader :avatar, AvatarUploader
   before_save { self.email = email.downcase }
   validates :first_name, presence: true, length: { maximum: 50 }
   has_secure_password

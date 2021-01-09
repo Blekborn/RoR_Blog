@@ -1,14 +1,17 @@
 class CommentsController < ApplicationController
-  before_action :set_comment # , only: %i[new edit show create update destroy]
+  before_action :set_comment, only: %i[new edit show create update destroy]
   before_action :logged_in_author, only: %i[create destroy]
 
-  #@comment = Comment.new(author_id: params[:author_id])
+  def index
+    @post.comments = @post.comments.arrange(order: :created_at)
+  end
+
   def show
     @comment = @post.comments.find(params[:id])
   end
 
   def new
-    @comment = @post.comments.build
+    @comment = Comment.new(parent_id: params[:parent_id])
   end
 
   def edit
@@ -17,13 +20,16 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @post.comments.build(comment_params)
-    # @comment = @post.comments.create(comment_params)
-    # redirect_to post_path(@post)
-    if @comment.save
-      redirect_to post_path(@post)
+    @comment.author_id = current_user.id
+    if @comment.ancestors.count <= 4
+      if @comment.save
+        redirect_to @post
+      else
+        redirect_to @post
+        flash[:danger] = 'Comment is too long (maximum is 300 characters)'
+      end
     else
-      redirect_to post_path(@post)
-      flash[:danger] = 'Comment is too long (maximum is 300 characters)'
+      redirect_to @post, alert: 'To much comments in one tree (5 comments max)'
     end
   end
 
@@ -69,7 +75,7 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:body, :author_id, :post_id)
+    params.require(:comment).permit(:body, :author_id, :post_id, :parent_id)
   end
 
 end

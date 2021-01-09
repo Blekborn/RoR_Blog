@@ -1,15 +1,23 @@
-<p id="notice"><%= notice %></p>
+<%= form_for([@post, @comment]) do |form| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
 
-<%= render 'posts/header' %>
+      <ul>
+        <% @comment.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form.hidden_field :parent_id %>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body, class:'form-control' %>
+  </p>
+  <p>
+    <%= form.submit class:'btn btn-info btn-lg' %>
+  </p>
+<% end %>
 
-<div class="p-4 p-md-5 mb-4">
-  <div class="px-0 p-4">
-    <h1 class="display-4 font-italic text-center">Edit comment</h1>
-  </div>
-</div>
-
-<div class="container center">
-  <%= render 'form_comment', comment: @comment %>
-  <br>
-  <%= link_to 'Back', post_path(@post), :class => "btn btn-outline-dark shadow-none" %>
-</div>
+<%= link_to 'show', [@comment.post, @comment]%>
