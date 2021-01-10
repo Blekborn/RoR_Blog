@@ -1,5 +1,11 @@
 heroku: hw_5
 
+# local:
+- bundle install
+- rake db:migrate
+- yarn add bootstrap jquery popper.js
+- rails s
+
 Используя ваш текущий проект (hw_2) расширить его. - `Done`
 
 Задачи:
