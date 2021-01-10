@@ -4,7 +4,7 @@
 - yarn add bootstrap jquery popper.js
 - rails s
 
-### heroku: https://intense-basin-42291.herokuapp.com/
+### heroku: hw_5
 
 1. Сделать систему авторизации для Author.
    Сделать возможность регистрации, входа и выхода (готовые гемы не использовать).
