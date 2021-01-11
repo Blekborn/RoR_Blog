@@ -1,0 +1,2 @@
+
+$(".comment-<%=@comment.parent_id %>").after('<%= j render('comments/new_form', scoreboard: @post, comment: @comment) %>');

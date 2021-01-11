@@ -1,42 +1,43 @@
-<article class="blog-post">
-  <p class="blog-post-meta">
-    <%#= gravatar_for comment.author %>
-    <%= avatar_for(@post.author, size: 30) %>
+<div class="comment-<%= comment.id %>">
+  <article class="blog-post">
+    <p class="blog-post-meta">
+      <%= avatar_for(@post.author, size: 30) %>
+      <strong class="d-inline-block mb-2 text-primary"><%= comment.author.first_name %></strong></p>
+    <p>
+      <small class="text-muted"><%= distance_of_time_in_words(comment.created_at, Time.now) %></small>
+      <br>
+      <% if comment.created_at < comment.updated_at %><span class="edited" style="color: #cc0000;">edited</span>
+      <% end %>
+      <%= comment.body %></p>
 
-    <strong class="d-inline-block mb-2 text-primary"><%= comment.author.first_name %></strong></p>
-  <p>
-    <small class="text-muted"><%= distance_of_time_in_words(comment.created_at, Time.now) %></small>
+    <%= comment.get_upvotes.size %>
+    <%= link_to ('<i class="fa fa-thumbs-up"></i>').html_safe, like_post_comment_path(@post, comment),
+                method: :put, :class => "btn btn-outline-dark shadow-none", id: 'upvote', :remote => true %>
+    <%= comment.get_downvotes.size %>
+    <%= link_to ('<i class="fa fa-thumbs-down"></i>').html_safe, dislike_post_comment_path(@post, comment),
+                method: :put, :class => "btn btn-outline-dark shadow-none", id: 'downvote', :remote => true %>
+    |
+    <%= comment.votes_for.size %>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+      <path class="btn shadow-none" d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"/>
+    </svg>
     <br>
-    <% if comment.created_at < comment.updated_at %><span class="edited" style="color: #cc0000;">edited</span>
+    <br>
+  </article>
+  <% if comment.author == current_user %>
+    <%= link_to 'Reply', new_post_comment_path(comment.post, :parent_id => comment.id, js: true), remote: true,
+                class: 'btn btn-outline-warning shadow-none' %>
+    <% if comment.created_at >= 1.hour.ago %>
+      <%= link_to 'Edit', edit_post_comment_path(comment.post, comment, js: true),
+                  remote: true, :class => "btn btn-outline-dark shadow-none" %>
     <% end %>
-    <%= comment.body %></p>
-
-  <%= comment.get_upvotes.size %>
-  <%= link_to ('<i class="fa fa-thumbs-up"></i>').html_safe, like_post_comment_path(@post, comment), method: :put, :class => "btn btn-outline-dark shadow-none" %>
-  <%= comment.get_downvotes.size %>
-  <%= link_to ('<i class="fa fa-thumbs-down"></i>').html_safe, dislike_post_comment_path(@post, comment), method: :put, :class => "btn btn-outline-dark shadow-none" %>
-  |
-  <%= comment.votes_for.size %>
-
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
-    <path class="btn shadow-none" d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"/>
-  </svg>
-  <br>
-  <br>
-</article>
-<% if comment.author == current_user %>
-  <%= link_to "Reply", new_post_comment_path(comment.post, :parent_id => comment.id), id: 'comment_reply_link',
-  class: 'btn btn-outline-warning shadow-none' %>
-  <% if comment.created_at >= 1.hour.ago %>
-    <%= link_to 'Edit', edit_post_comment_path(@post, comment), :class => "btn btn-outline-dark shadow-none" %>
+    <%= link_to 'Destroy Comment', [comment.post, comment],
+                data: { confirm: 'Are you sure?' },:class => "btn btn-outline-danger shadow-none", method: :delete, remote: true %>
   <% end %>
-  <%= link_to 'Destroy Comment', [comment.post, comment], :class => "btn btn-outline-danger shadow-none",
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %>
-<% end %>
-<br>
-<br>
-<hr class="featurette-divider w-25 d-inline-block">
+  <br>
+  <br>
+  <hr class="featurette-divider w-25 d-inline-block">
+</div>
 
 
 

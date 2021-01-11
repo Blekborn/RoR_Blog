@@ -22,30 +22,40 @@ class CommentsController < ApplicationController
     @comment = @post.comments.build(comment_params)
     @comment.author_id = current_user.id
     if @comment.ancestors.count <= 4
-      if @comment.save
-        redirect_to @post
-      else
-        redirect_to @post
-        flash[:danger] = 'Comment is not'
+      respond_to do |format|
+        if @comment.save
+          format.js { render 'create', status: :created, location: @post }
+          format.html { redirect_to @post, notice: 'Comment was successfully created.' }
+        else
+          format.html { redirect_to @post, alert: @comment.errors.full_messages.first }
+        end
       end
     else
-      redirect_to @post, alert: 'To much comments in one tree (5 comments max)'
+      respond_to do |format|
+        format.html { redirect_to @post, alert: 'To much comments in one tree (5 comments max)' }
+      end
     end
   end
 
   def update
     @comment = @post.comments.find(params[:id])
-    if @comment.update(comment_params)
-      redirect_to post_path(@post), notice: 'successfully updated.'
-    else
-      redirect_to post_path(@post)
+    respond_to do |format|
+      if @comment.update(comment_params)
+        format.js { render 'update', status: :created, location: @post }
+        format.html { redirect_to @post, notice: 'Comment was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
     end
   end
 
   def destroy
     @comment = @post.comments.find(params[:id])
     @comment.destroy
-    redirect_to post_path(@post)
+    respond_to do |format|
+      format.js { render 'destroy', status: :created, location: @post }
+      format.html { redirect_to @post, notice: 'Comment was successfully destroyed.' }
+    end
   end
 
   def publish
@@ -58,14 +68,18 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
     @comment.liked_by current_user
-    redirect_to post_path(@post)
+    respond_to do |format|
+      format.html { redirect_to @post }
+    end
   end
 
   def downvote
     @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
     @comment.downvote_from current_user
-    redirect_to post_path(@post)
+    respond_to do |format|
+      format.html { redirect_to @post }
+    end
   end
 
   private
