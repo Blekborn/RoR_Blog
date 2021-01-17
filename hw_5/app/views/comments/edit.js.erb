@@ -1,2 +1,6 @@
-$(".comment-<%= @comment.id %>").after("<%= j render 'form_edit', post: @post, comment: @comment %>");
+$('#edit_comment-<%= params[:parent_id]%>').hide();
+
+$(".comment-<%=@comment.id %>").after('<%= j render('form_edit', comment: @comment) %>');
+
+
 

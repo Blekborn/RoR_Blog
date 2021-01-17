@@ -1,2 +1,5 @@
-
-$(".comment-<%=@comment.parent_id %>").after('<%= j render('comments/new_form', scoreboard: @post, comment: @comment) %>');
+$('.comment-reply').show()
+$('.form_new').hide()
+$('#reply-comment-<%= params[:parent_id]%>').hide();
+$('#reply-comment-<%= params[:parent_id]%>').after('<%= j render 'form' %>');
+$('#comments_form .form_new').hide()

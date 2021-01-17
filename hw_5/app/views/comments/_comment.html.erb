@@ -25,11 +25,13 @@
     <br>
   </article>
   <% if comment.author == current_user %>
+
     <%= link_to 'Reply', new_post_comment_path(comment.post, :parent_id => comment.id, js: true), remote: true,
-                class: 'btn btn-outline-warning shadow-none' %>
+                class: 'btn btn-outline-warning shadow-none comment_reply', id: "reply-comment-#{comment.id}"%>
+
     <% if comment.created_at >= 1.hour.ago %>
       <%= link_to 'Edit', edit_post_comment_path(comment.post, comment, js: true),
-                  remote: true, :class => "btn btn-outline-dark shadow-none" %>
+                  remote: true, :class => "btn btn-outline-dark shadow-none", id: "edit_comment-#{comment.id}" %>
     <% end %>
     <%= link_to 'Destroy Comment', [comment.post, comment],
                 data: { confirm: 'Are you sure?' },:class => "btn btn-outline-danger shadow-none", method: :delete, remote: true %>

@@ -35,7 +35,9 @@
   <div id="comments">
     <%= nested_comments @post.comments.arrange(order: :created_at) %>
   </div>
-  <%= render 'comments/form' %>
+  <div id="comments_form">
+    <%= render 'comments/form' %>
+  </div>
   <br>
   <%= link_to 'Back', posts_path, :class => "btn btn-outline-dark shadow-none" %>
   <span class="p-4"></span>

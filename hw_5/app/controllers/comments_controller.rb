@@ -69,6 +69,7 @@ class CommentsController < ApplicationController
     @comment = @post.comments.find(params[:id])
     @comment.liked_by current_user
     respond_to do |format|
+      format.js { render 'vote', status: :created, location: @post }
       format.html { redirect_to @post }
     end
   end
@@ -78,6 +79,7 @@ class CommentsController < ApplicationController
     @comment = @post.comments.find(params[:id])
     @comment.downvote_from current_user
     respond_to do |format|
+      format.js { render 'vote', status: :created, location: @post }
       format.html { redirect_to @post }
     end
   end
