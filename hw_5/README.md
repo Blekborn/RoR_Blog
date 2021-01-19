@@ -1,4 +1,4 @@
-# heroku:
+# heroku: https://fierce-sea-12531.herokuapp.com/
 
 Дорабатываем наш блог.
 
