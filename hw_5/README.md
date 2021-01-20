@@ -1,5 +1,11 @@
 # heroku: https://fierce-sea-12531.herokuapp.com/
 
+# local:
+- bundle install
+- rake db:migrate
+- yarn add bootstrap jquery popper.js
+- rails s
+
 Дорабатываем наш блог.
 
 0. Подключить пейджинацию для постов (отображать 8 постов для одной страницы). - `Done`
